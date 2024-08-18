@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Banners</title>
+    <style>
+      .image-to-show {
+        width: 400px;
+        height: 400px;
+      }
+
+      .images-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .d-flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;    
+        justify-content: center; 
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="images-wrapper d-flex">
+        <img src="./img/1.jpg" alt="image of game" id="mainImage" class="image-to-show" />
+      </div>
+      <p id="secondsCount">Seconds: 10</p>
+      <div class="buttons">
+        <input id="stopBtn" type="button" onclick="stop()" value="Stop" />
+        <input id="startBtn" type="button" onclick="start()" value="Start" />
+      </div>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
+</html>

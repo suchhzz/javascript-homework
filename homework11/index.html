@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Homework-buttons</title>
+	<style>
+	.btn-wrapper{
+		height: 60vh;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.btn{
+		border: none;
+		border-radius: 20px;
+		min-width: 120px;
+		padding: 7px;
+		color: #fff;
+		font-size: 14px;
+		background-color: #33333a;
+		cursor: pointer;
+	}
+	.btn:active,
+	.btn:focus{
+		outline: none;
+	}
+	.selected {
+		background-color: blue;
+	}
+	</style>
+</head>
+<body>
+	<div class="btn-wrapper">
+    	<button id="ENTER" class="btn">Enter</button>
+		<button id="S" class="btn">S</button>
+		<button id="E" class="btn">E</button>
+		<button id="O" class="btn">O</button>
+		<button id="N" class="btn">N</button>
+		<button id="L" class="btn">L</button>
+		<button id="Z" class="btn">Z</button>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
