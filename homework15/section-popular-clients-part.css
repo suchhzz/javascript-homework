@@ -1,0 +1,170 @@
+section .popular-clients .popular-clients-head {
+    height: 590px;
+    background-image: url('images/section/popular-clients/parallax-bg.jpeg');
+}
+
+section .popular-clients .popular-clients-head .image-container {
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    column-gap: 40px;
+    row-gap: 100px;
+}
+
+section .popular-clients .popular-clients-head .image-container .image-text {
+    grid-column: 1 / 5;
+}
+
+section .popular-clients .popular-clients-head .image-container .image-text p {
+    font-family: 'OpenSans-Bold';
+    font-size: 32px;
+    color: white;
+    margin: 0;
+}
+
+section .popular-clients .top-rated, .hot-news {
+    margin-top: 12px;
+    margin-bottom: 70px;
+}
+
+section .popular-clients .top-rated .text, .hot-news .text {
+    margin: 52px 0;
+    text-align: center;
+}
+
+section .popular-clients .top-rated .text p, .hot-news .text p {
+    font-family: 'OpenSans-Bold';
+    font-size: 27px;
+    color: #00B5D1;
+    margin: 0;
+}
+
+section .popular-clients .top-rated .rated-images {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+section .popular-clients .hot-news .news-container {
+    grid-template-columns: repeat(4, 277px);
+    grid-template-rows: 259px 418px 418px 259px;
+    grid-row-gap: 35px;
+    grid-column-gap: 35px;
+    align-self: center;
+    justify-self: left;
+    justify-content: center;
+}
+
+section .popular-clients .hot-news .news-container .news-item {
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #FAF7F7;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+section .popular-clients .hot-news .news-container .news-item .text-item .title {
+    font-family: 'OpenSans-Bold';
+    font-size: 18px;
+    color: #2F373B;
+}
+
+section .popular-clients .hot-news .news-container .news-item .text-item .title p {
+    margin: 0;
+}
+
+section .popular-clients .hot-news .news-container .news-item .text-item .description {
+    text-align: right;
+    font-family: 'OpenSans-Semibold';
+    font-size: 14px;
+    color: #57646A;
+    max-width: 554px;
+}
+
+.text-bottom {
+    padding: 0;
+    text-align: right;
+    text-wrap: wrap;
+    padding-left: 30px;
+    padding-right: 25px;
+}
+
+.text-right {
+    padding-left: 30px;
+    padding-right: 25px;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 7px;
+}
+
+
+section .popular-clients .hot-news .news-container .item1 {
+    grid-column: 1 / 4;
+    grid-row: 1 / 1;
+}
+
+section .popular-clients .hot-news .news-container .item2 {
+    grid-column: 4 / 4;
+    grid-row: 1 / 1;
+}
+
+section .popular-clients .hot-news .news-container .item3 {
+    grid-column: 1 / 3;
+    grid-row: 2 / 2;
+    grid-template-rows: repeat(2, 2fr);
+    grid-template-columns: 1fr;
+    justify-self: start;
+}
+
+section .popular-clients .hot-news .news-container .item4 {
+    grid-column: 3 / 5;
+    grid-row: 2 / 2;
+    grid-template-rows: repeat(2, 2fr);
+    grid-template-columns: 1fr;
+    justify-self: end;
+}
+
+section .popular-clients .hot-news .news-container .item5 {
+    grid-column: 1 / 3;
+    grid-row: 3 / 3;
+    grid-template-rows: repeat(2, 2fr);
+    grid-template-columns: 1fr;
+    justify-self: start;
+}
+
+section .popular-clients .hot-news .news-container .item6 {
+    grid-column: 3 / 5;
+    grid-row: 3 / 3;
+    grid-template-rows: repeat(2, 2fr);
+    grid-template-columns: 1fr;
+    justify-self: end;
+}
+
+section .popular-clients .hot-news .news-container .item7 {
+    grid-column: 1 / 1;
+    grid-row: 4 / 4;
+}
+
+
+section .popular-clients .hot-news .news-container .item8 {
+    grid-column: 2 / 5;
+    grid-row: 4 / 4;
+}
+
+section .popular-clients .top-rated .hide-button {
+    margin-top: 20px;
+    margin-left: 30px;
+    background-color: #FFFFFF;
+    color: black;
+    font-family: 'OpenSans-Semibold';
+    font-size: 13px;
+    border: 1px solid #8D8D8D;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+section .popular-clients .top-rated .hide-button:hover {
+    cursor: pointer;
+    background-color: #DBDBDB;
+}

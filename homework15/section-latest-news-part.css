@@ -1,0 +1,108 @@
+section .top-button {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background-color: #FFFFFF;
+    color: black;
+    font-family: 'OpenSans-Semibold';
+    font-size: 15px;
+    border: 1px solid #8D8D8D;
+    border-radius: 10px;
+    padding: 5px 15px;
+}
+
+section .top-button:hover {
+    cursor: pointer;
+    background-color: #DBDBDB;
+}
+
+section .latest-news {
+    height: 100%;
+    width: 100%;
+}
+
+section .latest-news .latest-news-head {
+    background-image: url('images/section/latest-news/header-bg.jpeg');
+    height: 375px;
+    justify-content: center;
+}
+
+section .latest-news .latest-news-head .image-text p {
+    font-family: 'OpenSans-Regular';
+    font-size: 27px;
+    color: white;
+}
+
+section .latest-news .latest-news-head .image-buttons {
+    justify-content: center;
+    gap: 20px;
+}
+
+section .latest-news .latest-news-head .image-buttons button {
+    width: 170px;
+    height: 55px;
+    font-family: 'OpenSans-Semibold';
+    font-size: 18px;
+    color: white;
+    border:none;
+    border-radius: 4px;
+}
+
+section .latest-news .latest-news-head .image-buttons button:hover {
+    cursor: pointer;
+}
+
+button.green-button {
+    background-color: #60CB5A;
+}
+button.cyan-button {
+    background-color: #00BAD7;
+}
+
+section .popular-posts {
+    margin-top: 10px;
+    margin-bottom: 52px;
+}
+
+section .popular-posts .main-text {
+    padding: 52px 0;
+    text-align: center;
+}
+
+section .popular-posts .main-text p {
+    font-family: 'OpenSans-Bold';
+    font-size: 27px;
+    color: #00B5D1;
+    margin: 0;
+}
+
+section .popular-posts .posts {
+    justify-content: center;
+    align-items: start;
+    gap: 30px
+}
+
+section .popular-posts .posts .item {
+    background-color: white;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+section .popular-posts .posts .item .item-image:hover {
+    cursor: pointer;
+}
+
+section .popular-posts .posts .item .item-text {
+    margin: 0;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+
+section .popular-posts .posts .item .item-text p {
+    margin: 0;
+    font-family: 'OpenSans-Bold';
+    font-size: 18px;
+    color: #2F373B;
+}

@@ -1,0 +1,17 @@
+footer .foot-container {
+    background-color: #141B1F;
+    padding: 0 344px;
+    justify-content: space-between;
+    height: 70px;
+}
+
+footer .foot-container .rights-text p {
+    font-family: 'OpenSans-Regular';
+    color: white;
+    font-size: 13px;
+}
+
+footer .foot-container .lioit-logo {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
