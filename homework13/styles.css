@@ -110,6 +110,7 @@ section .main-info .text p {
     text-wrap: wrap;
     font-family: 'Myriad-pro';
     font-size: 18px;
+    color: black;
 }
 
 section .description {
