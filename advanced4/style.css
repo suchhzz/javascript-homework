@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body .container {
+    padding: 20px;
+}
+
+table {
+    border-collapse:separate;
+    border-spacing: 0;
+}
+
+
+body .container table td {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #F2F2F2;
+}
+
+body .container table {
+    border: 1px solid black;
+}
+
+.player-cell {
+    background-color: green;
+}
+
+.shoot-cell {
+    background-color: orange;
+}
+
+.enemy-cell {
+    background-color: red;
+}
+
+.wall-cell {
+    background-color: gray;
+}
+
+.interface {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    flex-direction: column;
+    align-items: start;
+}
+
+.interface p {
+    font-size: 20px;
+    margin-right: 20px;
+}

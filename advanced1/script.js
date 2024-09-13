@@ -3,7 +3,7 @@
 class Hamburger {
     static SIZE_SMALL = 'SMALL';
     static SIZE_BIG = 'BIG';
-    
+
     static STUFFING_CHEESE = 'CHEESE';
     static STUFFING_SALAD = 'SALAD';
     static STUFFING_POTATO = 'POTATO';
@@ -18,7 +18,7 @@ class Hamburger {
     constructor(size, stuffing) {
         this.#size = size;
 
-        stuffing.push(stuffing);
+        this.#stuffings.push(stuffing);
     }
     
     getPrice() {

@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body .container {
+    padding: 100px;
+}
+
+table {
+    border-collapse:collapse;
+}
+
+body .container table td {
+    width: 3px;
+    height: 3px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.invert-color {
+    filter: invert();
+    background-color: black;
+}
