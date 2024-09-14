@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 let playground;
 let playerTank;
@@ -41,14 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
     playground.setTankPosition(enemyTank7);
     playground.setTankPosition(enemyTank8);
 
-    let enemyInterval1 = setInterval(function () {enemyPlay(enemyTank1, enemyInterval1)}, enemyMoveDelay);
-    let enemyInterval2 = setInterval(function () {enemyPlay(enemyTank2, enemyInterval2)}, enemyMoveDelay);
-    let enemyInterval3 = setInterval(function () {enemyPlay(enemyTank3, enemyInterval3)}, enemyMoveDelay);
-    let enemyInterval4 = setInterval(function () {enemyPlay(enemyTank4, enemyInterval4)}, enemyMoveDelay);
-    let enemyInterval5 = setInterval(function () {enemyPlay(enemyTank5, enemyInterval5)}, enemyMoveDelay);
-    let enemyInterval6 = setInterval(function () {enemyPlay(enemyTank6, enemyInterval6)}, enemyMoveDelay);
-    let enemyInterval7 = setInterval(function () {enemyPlay(enemyTank7, enemyInterval7)}, enemyMoveDelay);
-    let enemyInterval8 = setInterval(function () {enemyPlay(enemyTank8, enemyInterval8)}, enemyMoveDelay);
+    let enemyInterval1 = setInterval(() => {enemyPlay(enemyTank1, enemyInterval1)}, enemyMoveDelay);
+    let enemyInterval2 = setInterval(() => {enemyPlay(enemyTank2, enemyInterval2)}, enemyMoveDelay);
+    let enemyInterval3 = setInterval(() => {enemyPlay(enemyTank3, enemyInterval3)}, enemyMoveDelay);
+    let enemyInterval4 = setInterval(() => {enemyPlay(enemyTank4, enemyInterval4)}, enemyMoveDelay);
+    let enemyInterval5 = setInterval(() => {enemyPlay(enemyTank5, enemyInterval5)}, enemyMoveDelay);
+    let enemyInterval6 = setInterval(() => {enemyPlay(enemyTank6, enemyInterval6)}, enemyMoveDelay);
+    let enemyInterval7 = setInterval(() => {enemyPlay(enemyTank7, enemyInterval7)}, enemyMoveDelay);
+    let enemyInterval8 = setInterval(() => {enemyPlay(enemyTank8, enemyInterval8)}, enemyMoveDelay);
 });
 
 document.addEventListener('keydown', handleKeyDown);
@@ -80,10 +80,10 @@ function enemyPlay(enemyTank, intervalId) {
                 break;
         }
 
-        playground.playerMove(enemyTank.direction, enemyTank);
+        playground.tankMove(enemyTank.direction, enemyTank);
     }
     else {
-        playground.playerShoot(enemyTank);
+        playground.tankShoot(enemyTank);
     }
 }
 
@@ -98,28 +98,27 @@ function handleKeyDown() {
 
     if (allowedKeys.includes(event.key.toLowerCase())) {
 
-
         console.log(event.key);
 
         switch (event.key.toLowerCase()) {
             case 'w':
-                updateInterfaceDirection('W');
-                playground.playerMove('W', playerTank);
+                updateInterfaceDirection('UP');
+                playground.tankMove('W', playerTank);
                 break;
             case 'a':
-                updateInterfaceDirection('A');
-                playground.playerMove('A', playerTank);
+                updateInterfaceDirection('LEFT');
+                playground.tankMove('A', playerTank);
                 break;
             case 's':
-                updateInterfaceDirection('S');
-                playground.playerMove('S', playerTank);
+                updateInterfaceDirection('DOWN');
+                playground.tankMove('S', playerTank);
                 break;
             case 'd':
-                updateInterfaceDirection('D');
-                playground.playerMove('D', playerTank);
+                updateInterfaceDirection('RIGHT');
+                playground.tankMove('D', playerTank);
                 break;
             case ' ':
-                playground.playerShoot(playerTank);
+                playground.tankShoot(playerTank);
                 break;
         }
     }
@@ -148,6 +147,9 @@ function initializePlayground() {
 }
 
 function updateInterfaceDirection(pressedKey) {
-    let directionInterfaceText = document.getElementById('direction');
-    directionInterfaceText.textContent = pressedKey;
+    document.getElementById('direction').textContent = pressedKey;
+}
+
+function setPlayerHealthPoints(healthpoints) {
+    document.getElementById(`healthPoints`).textContent = healthpoints;
 }

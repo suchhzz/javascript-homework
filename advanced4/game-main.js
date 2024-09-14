@@ -1,3 +1,5 @@
+'use strict';
+
 class Tank {
     constructor(id, Xpos, Ypos, direction, type) {
         this.id = id;
@@ -7,11 +9,11 @@ class Tank {
         this.tankType = type;
     }
 
-    hitted() {
+    hit() {
         this.healthPoints -= 25;
     }
 
-    destroyed() {
+    destroy() {
         this.isDestroyed = true;
     }
 
@@ -36,15 +38,11 @@ class Wall {
 
 class Playground {
 
-    playground;
     playerTank;
     playgroundTanksArray = [];
-
     walls = [];
 
     constructor() {
-
-        this.initializePlayground();
         this.initialWalls();
     }
 
@@ -79,12 +77,6 @@ class Playground {
         }
     }
 
-    initializePlayground() {
-        this.playground = Array.from({ length: 50 }, () => 
-            Array(50).fill(0)
-        );
-    }
-
     addPlayer(playerTank) {
         this.playerTank = playerTank;
         this.playgroundTanksArray.push(playerTank);
@@ -94,7 +86,7 @@ class Playground {
         this.playgroundTanksArray.push(enemyTank);
     }
 
-    playerMove(direction, tank) {
+    tankMove(direction, tank) {
 
         tank.direction = direction;
 
@@ -102,22 +94,22 @@ class Playground {
 
         switch (tank.direction) {
             case 'W':
-                if (this.checkBorder(tank, tank.Xpos, tank.Ypos - 2)) {
+                if (this.checkBorder(tank, tank.Xpos, tank.Ypos - 2) && this.checkWallBorder(tank.Xpos, tank.Ypos - 1)) {
                     tank.Ypos--;
                 }
                 break;
             case 'S':
-                if (this.checkBorder(tank, tank.Xpos, tank.Ypos + 2)) {
+                if (this.checkBorder(tank, tank.Xpos, tank.Ypos + 2) && this.checkWallBorder(tank.Xpos, tank.Ypos + 1)) {
                     tank.Ypos++;
                 }
                 break;
             case 'A':
-                if (this.checkBorder(tank, tank.Xpos - 2, tank.Ypos)) {
+                if (this.checkBorder(tank, tank.Xpos - 2, tank.Ypos) && this.checkWallBorder(tank.Xpos - 1, tank.Ypos)) {
                     tank.Xpos--;
                 }
                 break;
             case 'D':
-                if (this.checkBorder(tank, tank.Xpos + 2, tank.Ypos)) {
+                if (this.checkBorder(tank, tank.Xpos + 2, tank.Ypos) && this.checkWallBorder(tank.Xpos + 1, tank.Ypos)) {
                     tank.Xpos++;
                 }
                 break;
@@ -126,37 +118,7 @@ class Playground {
         this.setTankPosition(tank);
     }
 
-    checkBorder(tank, xPos, yPos) {
-        if (xPos > 49 || xPos < 0 || yPos > 49 || yPos < 0) {
-            return false;
-        }
-
-        for (const otherTank of this.playgroundTanksArray) {
-
-            if (otherTank === tank) {
-                continue;
-            }
-    
-            const otherTankMinX = otherTank.Xpos - 1;
-            const otherTankMaxX = otherTank.Xpos + 1;
-            const otherTankMinY = otherTank.Ypos - 1;
-            const otherTankMaxY = otherTank.Ypos + 1;
-    
-            if (xPos >= otherTankMinX && xPos <= otherTankMaxX && 
-                yPos >= otherTankMinY && yPos <= otherTankMaxY) {
-                return false;
-            }
-        }
-
-        for (const wall of this.walls) {
-            if (xPos === wall.Xpos && yPos === wall.Ypos) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    playerShoot(tank) {
+    tankShoot(tank) {
 
         let shootInterval = 50;
         let shootXpos = tank.Xpos;
@@ -201,13 +163,11 @@ class Playground {
             let hittedTank = this.checkHit(shootXpos, shootYpos, tank.tankType);
 
             if (hittedTank) {
-                hittedTank.hitted();
+                hittedTank.hit();
 
                 if (hittedTank.id === this.playerTank.id) {
                     setPlayerHealthPoints(hittedTank.healthPoints);
                 }
-    
-                console.log(`tank id ${hittedTank.id} hp: ${hittedTank.healthPoints}`);
 
                 if (hittedTank.healthPoints <= 0) {
                     this.destroyTank(hittedTank);
@@ -217,11 +177,45 @@ class Playground {
                 clearInterval(intervalId);
             }
 
-            if (this.checkWall(shootXpos, shootYpos) || shootXpos < 0 || shootXpos >= 50 || shootYpos < 0 || shootYpos >= 50) {
+            if (this.checkWallShoot(shootXpos, shootYpos) || shootXpos < 0 || shootXpos >= 50 || shootYpos < 0 || shootYpos >= 50) {
                 clearInterval(intervalId);
             }
 
         }, shootInterval);
+    }
+
+    checkBorder(tank, Xpos, Ypos) {
+        if (Xpos > 49 || Xpos < 0 || Ypos > 49 || Ypos < 0) {
+            return false;
+        }
+
+        for (const otherTank of this.playgroundTanksArray) {
+
+            if (otherTank === tank) {
+                continue;
+            }
+    
+            const otherTankMinX = otherTank.Xpos - 1;
+            const otherTankMaxX = otherTank.Xpos + 1;
+            const otherTankMinY = otherTank.Ypos - 1;
+            const otherTankMaxY = otherTank.Ypos + 1;
+    
+            if (Xpos >= otherTankMinX && Xpos <= otherTankMaxX && 
+                Ypos >= otherTankMinY && Ypos <= otherTankMaxY) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    checkWallBorder(Xpos, Ypos) {
+        for (const wall of this.walls) {
+            if (Xpos - 1 <= wall.Xpos && Xpos + 1 >= wall.Xpos && Ypos - 1 <= wall.Ypos && Ypos + 1 >= wall.Ypos) {
+                return false;
+            }
+        }
+        return true;
     }
 
     checkHit(shootXpos, shootYpos, tankType) {
@@ -235,7 +229,7 @@ class Playground {
         return hittedTank;
     }
 
-    checkWall(shootXpos, shootYpos) {
+    checkWallShoot(shootXpos, shootYpos) {
         for (const wall of this.walls) {
             if (shootXpos === wall.Xpos && shootYpos === wall.Ypos) {
                 return true;
@@ -263,10 +257,6 @@ class Playground {
     destroyTank(destroyedTank) {
         this.playgroundTanksArray = this.playgroundTanksArray.filter(tank => tank.id !== destroyedTank.id);
         this.cleanTankPosition(destroyedTank);
-        destroyedTank.destroyed();
+        destroyedTank.destroy();
     }
-}
-
-function setPlayerHealthPoints(healthpoints) {
-    document.getElementById(`healthPoints`).textContent = healthpoints;
 }
